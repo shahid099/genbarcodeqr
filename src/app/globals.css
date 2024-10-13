@@ -9,8 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #5f5f5f;
+    --foreground: #000000;
   }
 }
 
@@ -24,4 +24,43 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.textgradient {
+  font-size: 20px;
+  background: -webkit-linear-gradient(#fbff00, #15f0e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.textgradient:hover {
+  background: -webkit-linear-gradient(#ff0b0b, #fbff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.marginimg {
+  margin-bottom: 10px;
+}
+
+.buttonGen {
+  padding: 8px 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.buttonBackground {
+  background: linear-gradient(to right, rgb(58, 71, 255), rgb(44, 243, 216));
+
+}
+.onclickButtonBackground {
+  background: linear-gradient(to left,rgb(58, 71, 255), rgb(44, 243, 216));
+  color: red;
+}
+
+.setting {
+  margin-top: 5em;
+}
+
+.setting * {
+padding: 2px 5px;
 }
