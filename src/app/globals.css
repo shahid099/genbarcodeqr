@@ -38,6 +38,11 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Background of the Page */
+.bg {
+  background: #334155;
+}
+
 .marginimg {
   margin-bottom: 10px;
 }
