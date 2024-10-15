@@ -1,5 +1,5 @@
 "use client"
-import Qrcode from "../../../components/Qrcode"
+import Qrcode from "../../components/Qrcode"
 export default function Qcode() {
   return (
         <div>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #b1b1b1;
   --foreground: #171717;
 }
 
@@ -51,6 +51,7 @@ body {
   padding: 8px 20px;
   border-radius: 20px;
   margin-bottom: 20px;
+  margin-top: 8px;
 }
 
 .buttonBackground {
@@ -69,3 +70,4 @@ body {
 .setting * {
 padding: 2px 5px;
 }
+

@@ -24,8 +24,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
-        <header className="w-full h-6">
+        <header className="w-full h-6 relative z-40">
         <nav className="bg w-full h-10 flex justify-around items-center rounded-md bg-slate-700">
           <div className="flex-col gap-1 hidden">
             <span className="block w-6 h-1 bg-slate-300"></span>
@@ -47,7 +46,6 @@ export default function RootLayout({ children }) {
           <Link className="p-2 text-zinc-200 hover:text-cyan-400" href="/login">Login</Link>
         </nav>
       </header>
-
         {children}
       </body>
     </html>
