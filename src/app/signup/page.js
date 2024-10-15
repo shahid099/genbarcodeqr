@@ -1,4 +1,4 @@
-import React from 'react'
+"use client"
 import Signup from '../../components/Signup'
 
 const page = () => {
