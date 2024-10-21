@@ -7,7 +7,7 @@ const page = () => {
           Contact Me
         </h1>
         <p className="text-lg text-center text-gray-700">
-          I'm <span className="font-semibold">Muhammad Shahid</span>, a{" "}
+          I&#39;m <span className="font-semibold">Muhammad Shahid</span>, a{" "}
           <strong>MERN Stack Developer</strong> specializing in{" "}
           <strong>Next.js</strong> and <strong>React.js</strong>. With 2 years
           of experience in building dynamic, responsive web applications, I am
@@ -73,7 +73,7 @@ const page = () => {
 
         <div className="text-center">
           <h2 className="text-2xl font-semibold text-gray-800">
-            Let's Collaborate!
+            Let&#39;s Collaborate!
           </h2>
           <p className="text-gray-700">
             Whether you need a new website, consultation, or integration with

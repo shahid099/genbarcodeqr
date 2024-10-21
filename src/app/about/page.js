@@ -20,7 +20,7 @@ const page = () => {
           <p className="text-gray-700">
             Our mission is simple: We aim to provide an easy, reliable, and accessible
             platform for everyone to generate <strong>QR codes and barcodes</strong>.
-            Whether you're a business owner looking to streamline product labeling or a
+            Whether you&#39;re a business owner looking to streamline product labeling or a
             marketer sharing digital campaigns, we have the tools you need to make it
             happen in seconds.
           </p>
@@ -65,7 +65,7 @@ const page = () => {
           <p className="text-gray-700">
             Our platform caters to <em>businesses, educators, event organizers, retailers</em>,
             and individuals who need to quickly create barcodes or QR codes for various purposes.
-            Whether you're running an online store or organizing a wedding, we've got you covered.
+            Whether you&#39;re running an online store or organizing a wedding, we&#39;ve got you covered.
           </p>
         </section>
 
