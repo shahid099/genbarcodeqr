@@ -7,9 +7,6 @@ export default function Home() {
       <main className="h-full flex flex-col">
         <Barcodegenerate />
       </main>
-      <footer className="flex items-center justify-center my-10">
-        &copy; Barcodeqrcode All rights Reserved.
-      </footer>
     </div>
   );
 }

@@ -71,3 +71,13 @@ body {
 padding: 2px 5px;
 }
 
+@media (max-width: 700px) {
+  .threebar {
+    display: flex;
+    justify-content: left;
+  }
+
+  .removeElement {
+    display: none;
+  }
+}
