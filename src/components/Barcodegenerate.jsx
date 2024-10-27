@@ -1,5 +1,5 @@
 import { ReactBarcode } from "react-jsbarcode";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const Barcodegenerate = () => {
 
   const [textValue, setTextValue] = useState('');
@@ -62,15 +62,17 @@ const Barcodegenerate = () => {
 
   return (
     <>
-      <div className="w-full min-h-[50em] relative">
-        <section className="flex items-center justify-around mt-5">
+      <div className="w-full h-full relative">
+        <section className="flex items-center justify-around">
           <textarea id="textarea"
-            className="flex rounded-md p-2 border-red-200 outline-none" 
+            className="flex rounded-md p-2 border-red-200 outline-none max-md:w-[20em] max-md:h-[5em] max-md:mt-4" 
             value={textValue} 
             onChange={handleChange} 
             onKeyDown={handlePressEnter}
-            cols="80" rows="8" placeholder="Type something..."></textarea>
-          <div className="setting">
+            cols={60} rows={7} placeholder="Type something...">
+
+          </textarea>
+          <div className="setting max-md:hidden">
             <div className="formate">
               <h4>Select Format</h4>
               <select className="p-[2px] rounded-md" value={selectedValue} onChange={handleSelectChange} >

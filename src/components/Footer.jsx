@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='mt-20'>
+    <div className='bg-slate-200 w-full mt-20 py-3 text-center'>
         &copy; Barcodeqrcode All rights Reserved.
     </div>
   )
