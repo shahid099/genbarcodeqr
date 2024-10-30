@@ -27,7 +27,7 @@ body {
 }
 
 .textgradient {
-  font-size: 20px;
+  font-size: 16px;
   background: -webkit-linear-gradient(#fbff00, #15f0e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

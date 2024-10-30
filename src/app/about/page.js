@@ -3,7 +3,7 @@ const page = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl bg-white rounded-lg shadow-lg p-10 space-y-6">
-        <h1 className="text-4xl font-bold text-center text-blue-600">
+        <h1 className="text-3xl font-bold text-center text-blue-600 max-md:text-2xl max-sm:text-xl">
           About Us: Barcode & QR Code Generator
         </h1>
 
@@ -16,7 +16,7 @@ const page = () => {
         </p>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Our Mission</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">Our Mission</h2>
           <p className="text-gray-700">
             Our mission is simple: We aim to provide an easy, reliable, and accessible
             platform for everyone to generate <strong>QR codes and barcodes</strong>.
@@ -27,7 +27,7 @@ const page = () => {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Why Use Our Platform?</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">Why Use Our Platform?</h2>
           <ul className="list-disc pl-8 text-gray-700 space-y-2">
             <li><strong>Easy to Use</strong>: No technical skills required! Create codes in just a few clicks.</li>
             <li><strong>Customizable Options</strong>: Choose colors, sizes, error correction levels, and more.</li>
@@ -38,7 +38,7 @@ const page = () => {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">What Can You Create?</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">What Can You Create?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-blue-50 p-4 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold text-blue-700">QR Codes</h3>
@@ -61,7 +61,7 @@ const page = () => {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Who We Serve</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">Who We Serve</h2>
           <p className="text-gray-700">
             Our platform caters to <em>businesses, educators, event organizers, retailers</em>,
             and individuals who need to quickly create barcodes or QR codes for various purposes.
@@ -70,7 +70,7 @@ const page = () => {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Our Vision</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">Our Vision</h2>
           <p className="text-gray-700">
             We envision a world where <strong>scannable technology bridges the gap between
               the physical and digital worlds</strong>. With the rapid adoption of QR codes
@@ -80,7 +80,7 @@ const page = () => {
         </section>
 
         <section className="text-center">
-          <h2 className="text-2xl font-semibold text-gray-800">Get Started Now</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">Get Started Now</h2>
           <p className="text-gray-700">
             Start generating your <strong>QR codes and barcodes</strong> today and experience
             the convenience of seamless scannable solutions. Whether it is for business or
@@ -90,7 +90,7 @@ const page = () => {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Contact Us</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 max-sm:text-xl">Contact Us</h2>
           <p className="text-gray-700">
             Have questions or suggestions? Reach out to us at
             <a href="mailto:mshahidking099@gmail.com" className="text-blue-500 underline ml-1">

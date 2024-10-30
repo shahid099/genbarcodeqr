@@ -43,7 +43,7 @@ const page = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-blue-600 mb-12">
+        <h1 className="text-4xl font-bold text-center text-blue-600 mb-12 max-md:text-2xl max-sm:text-xl">
           My Projects
         </h1>
 
@@ -53,7 +53,7 @@ const page = () => {
               key={index}
               className={`p-6 rounded-lg shadow-lg ${project.bgColor}`}
             >
-              <h3 className={`text-2xl font-semibold ${project.textColor}`}>
+              <h3 className={`text-2xl font-semibold ${project.textColor} max-sm:text-xl`}>
                 {project.title}
               </h3>
               <p className="text-gray-700 mt-2">{project.description}</p>

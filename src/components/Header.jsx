@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header className="bg-gray-800 text-white sticky top-0 z-50 rounded-md">
-      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-12">
 
         {/* Navigation links for larger screens */}
         <nav className="hidden md:flex items-center space-x-6">
@@ -21,19 +21,19 @@ export default function Header() {
           </Link>
             {/* Other Pages */}
           <Link 
-            className="p-2 text-zinc-200 hover:text-cyan-400" 
+            className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
             href="/about">About Website
           </Link>
           <Link 
-            className="p-2 text-zinc-200 hover:text-cyan-400" 
+            className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
             href="/contact">Contact Me
           </Link>
           <Link 
-            className="p-2 text-zinc-200 hover:text-cyan-400" 
+            className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
             href="/projects">Projects
           </Link>
           <Link 
-            className="p-2 text-zinc-200 hover:text-cyan-400" 
+            className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
             href="/login">Login
           </Link>
         </nav>
@@ -47,6 +47,14 @@ export default function Header() {
           <span className="w-6 h-0.5 bg-white transition-transform"></span>
           <span className="w-6 h-0.5 bg-white transition-transform"></span>
         </button>
+        <div className="md:hidden w-full flex justify-center gap-[5%] items-center">
+          <Link href="/" className="block">
+            <span className="textgradient text-sm">Generate Barcodes</span> 
+          </Link>
+          <Link href="/qrcode" className="block">
+            <span className="textgradient text-sm">Generate QR</span> 
+          </Link>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -61,19 +69,19 @@ export default function Header() {
             </Link>
               {/* Other Pages */}
             <Link 
-              className="p-2 text-zinc-200 hover:text-cyan-400" 
+              className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
               href="/about">About Website
             </Link>
             <Link 
-              className="p-2 text-zinc-200 hover:text-cyan-400" 
+              className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
               href="/contact">Contact Me
             </Link>
             <Link 
-              className="p-2 text-zinc-200 hover:text-cyan-400" 
+              className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
               href="/projects">Projects
             </Link>
             <Link 
-              className="p-2 text-zinc-200 hover:text-cyan-400" 
+              className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
               href="/login">Login
             </Link>
           </div>

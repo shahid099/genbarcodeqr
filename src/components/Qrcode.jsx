@@ -33,15 +33,15 @@ const Qrcode = () => {
 
     return (
         <div className='w-full h-auto flex justify-start items-center flex-col gap-3'>
-            <div className='flex flex-col justify-center items-center mt-14 gap-4'>
-                <div className='flex justify-around gap-32'>
+            <div className='flex flex-col justify-center items-center mt-10 gap-4'>
+                <div className='flex justify-around gap-32 max-md:flex-col max-md:mb-5 max-md:gap-5'>
                     <section className='flex flex-col gap-3 mt-10'>
-                        <input onChange={handleChange} className='px-3 py-2 rounded-md w-[30em]' type='text' placeholder='Enter the text...' />
+                        <input onChange={handleChange} className='px-3 py-2 rounded-md w-[40vw]' type='text' placeholder='Enter the text...' />
                     </section>
                     <section className='w-52 h-52 flex flex-col'>
                         <div>
                             <label htmlFor="">Enter QR Code Size: </label>
-                            <input className='rounded-md px-2' type="number" name="size" id="size"
+                            <input className='rounded-md px-2 max-md:w-[40vw]' type="number" name="size" id="size"
                             value={size}
                             onChange={(e)=> setSize(e.target.value)}
                             />
@@ -62,7 +62,7 @@ const Qrcode = () => {
                         </div>
                         <div>
                             <label htmlFor="">Enter Margin: </label>
-                            <input className='rounded-md px-2' type="number" name="marginSize" id="marginSize" 
+                            <input className='rounded-md px-2 max-md:w-[40vw]' type="number" name="marginSize" id="marginSize" 
                             value={marginSize}
                             onChange={(e)=> setMarginSize(e.target.value)}
                             />

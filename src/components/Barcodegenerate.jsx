@@ -1,5 +1,5 @@
 import { ReactBarcode } from "react-jsbarcode";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 const Barcodegenerate = () => {
 
   const [textValue, setTextValue] = useState('');
@@ -69,7 +69,7 @@ const Barcodegenerate = () => {
             value={textValue} 
             onChange={handleChange} 
             onKeyDown={handlePressEnter}
-            cols={60} rows={7} placeholder="Type something...">
+            cols={50} rows={6} placeholder="Type something...">
 
           </textarea>
           <div className="setting max-md:hidden">
