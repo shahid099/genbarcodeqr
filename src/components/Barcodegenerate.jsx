@@ -60,6 +60,21 @@ const Barcodegenerate = () => {
   }
 }
 
+    // Function to Upload Data to Database
+    const dataUpload = async () => { 
+      console.log("Muhammad Shahid!", textValue);
+      const response = await fetch('https://barcodeqrapi.onrender.com/postdata', {
+          method: 'POST', 
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({textValue})
+      })
+      const json = await response.json();
+      console.log(json);
+   }
+  //  END OF Upload Data to Database
+
   return (
     <>
       <div className="w-full h-full relative">
@@ -69,17 +84,20 @@ const Barcodegenerate = () => {
             value={textValue} 
             onChange={handleChange} 
             onKeyDown={handlePressEnter}
-            cols={50} rows={6} placeholder="Type something...">
+            cols={45} rows={5} placeholder="Type something...">
 
           </textarea>
           <div className="setting max-md:hidden">
-            <div className="formate">
+            <div className="formate flex gap-1">
               <h4>Select Format</h4>
               <select className="p-[2px] rounded-md" value={selectedValue} onChange={handleSelectChange} >
                 <option value="code128">code128</option>
                 <option value="code39">code39</option>
               </select>
+              {/* Button to Upload the data to Mongodb */}
+              <button className="px-4 py-1 bg-white rounded-md" onClick={dataUpload}>ucode128</button>
             </div>
+            {/* End Button to Upload the data to Mongodb*/}
             <div className="bgColor" >
               <h4>Select Background Color</h4>
               <input className="rounded-lg" type="color" value={selectedbgColor} onChange={handlebgColorchange} />
