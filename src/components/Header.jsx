@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header className="bg-gray-800 text-white sticky top-0 z-50 rounded-md">
-      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-12">
+      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-10">
 
         {/* Navigation links for larger screens */}
         <nav className="hidden md:flex items-center space-x-6">
@@ -61,12 +61,6 @@ export default function Header() {
       {isMenuOpen && (
         <nav className="md:hidden bg-gray-800 px-4 pt-2 pb-4 space-y-2">
           <div className='flex justify-center items-center flex-col gap-2'>
-            <Link href="/" className="block">
-              <span className="textgradient">Generate Barcodes</span> 
-            </Link>
-            <Link href="/qrcode" className="block">
-            <span className="textgradient">Generate QR</span> 
-            </Link>
               {/* Other Pages */}
             <Link 
               className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 

@@ -28,12 +28,12 @@ body {
 
 .textgradient {
   font-size: 16px;
-  background: -webkit-linear-gradient(#fbff00, #15f0e5);
+  background: -webkit-linear-gradient(#fbff, #15f0e5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .textgradient:hover {
-  background: -webkit-linear-gradient(#ff0b0b, #fbff00);
+  background: -webkit-linear-gradient(#15f0e5, #fbff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -70,4 +70,3 @@ body {
 .setting * {
 padding: 2px 5px;
 }
-
