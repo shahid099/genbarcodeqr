@@ -1,14 +1,45 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 const Login = () => {
+  const router  = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+
     // Handle login logic here
+    try {
+      const response = await fetch('https://barcodeqrapi.onrender.com/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password }),
+      })
+  
+      const data = await response.json();
+  
+      if(response.ok) {
+          // Save the token to local storage
+          localStorage.setItem('token', data.token);
+          router.push('/'); // Redirect to home page
+          alert(data.message); // Show success alert
+      } else {
+        alert(data.message); // Show error alert
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An unexpected error occurred'); // Show alert for unexpected errors
+    }
   };
+
+  // shahid26
+  // shahid26@gmail.com
+  // 098765432
 
   return (
     <div className="flex justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600"> 

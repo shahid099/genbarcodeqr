@@ -7,6 +7,16 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const getUserdata = async ()=> {
+    const response = await fetch('https://barcodeqrapi.onrender.com/user/login', {
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = response.json();
+  }
+
   return (
     <header className="bg-gray-800 text-white sticky top-0 z-50 rounded-md">
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-10">
@@ -22,19 +32,23 @@ export default function Header() {
             {/* Other Pages */}
           <Link 
             className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-            href="/about">About Website
+            href="/about">
+              About Website
           </Link>
           <Link 
             className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-            href="/contact">Contact Me
+            href="/contact">
+              Contact Me
           </Link>
           <Link 
             className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-            href="/projects">Projects
+            href="/projects">
+              Projects
           </Link>
           <Link 
             className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-            href="/login">Login
+            href="/login">
+              Login
           </Link>
         </nav>
 
@@ -64,19 +78,23 @@ export default function Header() {
               {/* Other Pages */}
             <Link 
               className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-              href="/about">About Website
+              href="/about">
+                About Website
             </Link>
             <Link 
               className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-              href="/contact">Contact Me
+              href="/contact">
+                Contact Me
             </Link>
             <Link 
               className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-              href="/projects">Projects
+              href="/projects">
+                Projects
             </Link>
             <Link 
               className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
-              href="/login">Login
+              href="/login">
+                Login
             </Link>
           </div>
         </nav>

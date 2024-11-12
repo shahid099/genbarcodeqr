@@ -1,20 +1,46 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 const Signup = () => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-    console.log("Username:", username, "Email:", email, "Password:", password);
+
     // Handle signup logic here
+    try {
+      const response = await fetch('https://barcodeqrapi.onrender.com/user/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, email, password }),
+      })
+
+      const data = await response.json();
+      if (response.ok) {
+        // Save the token to local storage
+        localStorage.setItem('token', data.token);
+        setMessage(data.message); // Success message
+        router.push('/'); // Redirect to home page
+        alert(data.message); // Show success alert
+      } else {
+        setMessage(data.message); // Error message
+        alert(data.message); // Show error alert
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An unexpected error occurred');
+      alert('An unexpected error occurred'); // Show alert for unexpected errors
+    }
   };
+
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-500 to-teal-600">
@@ -75,23 +101,6 @@ const Signup = () => {
             />
           </div>
 
-          <div>
-            <label
-              htmlFor="confirmPassword"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="w-full mt-2 px-4 py-2 border rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none"
-              placeholder="Confirm your password"
-            />
-          </div>
           <button
             type="submit"
             className="w-full py-2 mt-4 text-white bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400"
@@ -99,6 +108,7 @@ const Signup = () => {
             Sign Up
           </button>
         </form>
+        <strong className="text-center">{message && <p>{message}</p>}</strong>
         <p className="text-sm text-center text-gray-600">
           Already have an account?{" "}
           <Link href="/login" className="text-green-500 hover:underline">

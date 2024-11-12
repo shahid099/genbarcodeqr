@@ -63,15 +63,23 @@ const Barcodegenerate = () => {
     // Function to Upload Data to Database
     const dataUpload = async () => { 
       console.log("Muhammad Shahid!", textValue);
+      const token = localStorage.getItem('token'); // Get the token from local storage
       const response = await fetch('https://barcodeqrapi.onrender.com/postdata', {
           method: 'POST', 
           headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': `${token}`, // Add token to Authorization header
           },
           body: JSON.stringify({textValue})
       })
-      const json = await response.json();
-      console.log(json);
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message); // Show success alert
+      } else {
+        alert(data.message); // Show error alert
+      }
+
    }
   //  END OF Upload Data to Database
 
