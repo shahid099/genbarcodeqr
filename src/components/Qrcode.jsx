@@ -32,7 +32,7 @@ const Qrcode = () => {
     };
 
     return (
-        <div className='w-full h-auto flex justify-start items-center flex-col gap-3'>
+        <div className='w-full h-[100vh] flex justify-start items-center flex-col gap-3'>
             <div className='flex flex-col justify-center items-center mt-10 gap-4'>
                 <div className='flex justify-around gap-32 max-md:flex-col max-md:mb-5 max-md:gap-5'>
                     <section className='flex flex-col gap-3 mt-10'>
