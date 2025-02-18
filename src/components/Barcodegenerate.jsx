@@ -85,7 +85,7 @@ const Barcodegenerate = () => {
 
   return (
     <>
-      <div className="w-full h-[100vh] relative">
+      <div className="w-full min-h-[105vh] relative">
         <section className="flex items-center justify-around">
           <textarea id="textarea"
             className="flex rounded-md p-2 border-red-200 outline-none max-md:w-[20em] max-md:h-[5em] max-md:mt-4" 
