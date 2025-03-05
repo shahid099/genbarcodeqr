@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+
 const Signup = () => {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,16 +30,16 @@ const Signup = () => {
         localStorage.setItem('token', data.token);
         setMessage(data.message); // Success message
         router.push('/'); // Redirect to home page
-        alert(data.message); // Show success alert
+        toast(data.message); // Show success alert
       } else {
         setMessage(data.message); // Error message
-        alert(data.message); // Show error alert
+        toast(data.message); // Show error alert
       }
       
     } catch (error) {
       console.error('Error:', error);
       setMessage('An unexpected error occurred');
-      alert('An unexpected error occurred'); // Show alert for unexpected errors
+      toast('An unexpected error occurred'); // Show alert for unexpected errors
     }
   };
 
@@ -44,6 +47,9 @@ const Signup = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-500 to-teal-600">
+      <div className="toast">
+        <ToastContainer />
+      </div> 
       <div className="w-full max-w-md p-8 space-y-8 bg-white shadow-lg rounded-lg my-16">
         <h2 className="text-2xl font-bold text-center text-gray-800">Create Account</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>

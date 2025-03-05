@@ -44,7 +44,7 @@ const page = () => {
             <li>
               🌐 <strong>Facebook:</strong>{" "}
               <a
-                href="https://www.facebook.com/profile.php?id=100023973283472"
+                href="www.facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"

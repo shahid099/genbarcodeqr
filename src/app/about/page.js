@@ -96,7 +96,7 @@ const page = () => {
             <a href="mailto:mshahidking099@gmail.com" className="text-blue-500 underline ml-1">
             mshahidking099@gmail.com
             </a>
-            or follow us on <a href="https://www.facebook.com/profile.php?id=100023973283472" className="text-blue-500 underline" target='_blank'>Facebook</a>.
+            or follow us on <a href="www.facebook.com" className="text-blue-500 underline" target='_blank'>Facebook</a>.
           </p>
         </section>
       </div>
