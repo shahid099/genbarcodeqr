@@ -9,7 +9,7 @@ const Barcodegenerate = () => {
     setTextValue(event.target.value);
   }
     // States 
-
+  const [ count, setCount ] = useState(0);
   const [ buttonbg, setButtonbg ] = useState("buttonBackground");
   const [barcodeArray, setBarcodeArray] = useState([]);
   const [selectedValue, setSelectedValue] = useState('code128');
@@ -55,8 +55,14 @@ const Barcodegenerate = () => {
       setButtonbg("buttonBackground")
     }, 2000); 
 
+    let toastText = textValue.trim();
+    if(toastText) {
       toast("Barcode Generated Successfully!")
+    } else {
+      toast("Enter text to Generate Barcodes!")
+    }
 
+    setCount(count + 1);
   }
 
   const handlePressEnter = (event)=> {
@@ -90,14 +96,10 @@ const Barcodegenerate = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="w-full min-h-[105vh] relative">
-=======
       <div className="w-full h-full relative">
         <div className="toast">
           <ToastContainer />
         </div>
->>>>>>> 979fa15 (Added react-toastify)
         <section className="flex items-center justify-around">
           <textarea id="textarea"
             className="flex rounded-md p-2 border-red-200 outline-none max-md:w-[20em] max-md:h-[5em] max-md:mt-4" 
