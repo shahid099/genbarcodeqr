@@ -50,6 +50,11 @@ export default function Header() {
             href="/login">
               Login
           </Link>
+          <Link 
+            className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
+            href="/pbarcode">
+              PBarcode
+          </Link>
         </nav>
 
         {/* Hamburger button for small screens */}
