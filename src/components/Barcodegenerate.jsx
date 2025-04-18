@@ -1,8 +1,10 @@
 import { ReactBarcode } from "react-jsbarcode";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation"; 
 import { ToastContainer, toast } from 'react-toastify';
 
 const Barcodegenerate = () => {
+  const router  =  useRouter();
 
   const [textValue, setTextValue] = useState('');
   const handleChange = (event)=> {
@@ -57,9 +59,9 @@ const Barcodegenerate = () => {
 
     let toastText = textValue.trim();
     if(toastText) {
-      toast("Barcode Generated Successfully!")
+      toast.success("Barcode Generated Successfully!")
     } else {
-      toast("Enter text to Generate Barcodes!")
+      toast.error("Enter text to Generate Barcodes!")
     }
 
     setCount(count + 1);
@@ -70,6 +72,8 @@ const Barcodegenerate = () => {
       handleClick();
   }
 }
+
+
 
     // Function to Upload Data to Database
     const dataUpload = async () => { 
@@ -86,7 +90,7 @@ const Barcodegenerate = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast(data.message); // Show success alert
+        toast.success(data.message); // Show success alert
       } else {
         toast(data.message); // Show error alert
       }
@@ -94,9 +98,42 @@ const Barcodegenerate = () => {
    }
   //  END OF Upload Data to Database
 
+  // Function to fetchUser Data from Database
+  const [user, setUser] = useState(null);
+  useEffect(()=> {
+    fetchUser();
+  }, [])
+  const fetchUser = async () => { 
+    const token = localStorage.getItem('token'); // Get the token from local storage
+    const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
+        method: 'GET', 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`, // Add token to Authorization header
+        },
+    })
+
+    const userData = await response.json();
+    setUser(userData.user);
+
+    if (response.ok) {
+      router.push('/');
+      // toast.success('User login Successfully'); // Show success alert
+    } else {
+      router.push('/login');
+      toast.error('Please login, to use the site.'); // Show error alert
+    }
+
+ }
+//  END Function to fetchUser Data from Database
+
   return (
     <>
       <div className="w-full h-full relative">
+        <h1 className="text-center mt-4 text-2xl"> 
+          <span className="text-3xl">Welcome,</span> 
+          <span className="text-3xl ml-4">{user?.username}</span> 
+        </h1>
         <div className="toast">
           <ToastContainer />
         </div>

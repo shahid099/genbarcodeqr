@@ -42,7 +42,7 @@ const Login = () => {
   // 098765432
 
   return (
-    <div className="flex justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600">
+    <div className="flex justify-center min-h-[90vh] bg-gradient-to-r from-blue-500 to-indigo-600">
       <div className="toast">
         <ToastContainer />
       </div> 
