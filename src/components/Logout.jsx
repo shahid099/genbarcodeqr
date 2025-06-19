@@ -35,23 +35,27 @@ const Logout = () => {
 
     const logoutUpdate = (user)=> {
         if(user) {
-            localStorage.clear('token');
+            // localStorage.clear('token');
             toast.success("User logout Successfully!")
-            router.push('/login');
+
+            setTimeout(() => {
+                router.push('/login');           
+            }, 6000);
+
         } else {
             toast.error("User does't exixt.")
         }
     }
 
     return (
-        <>
+        <div className='flex justify-center items-center'>
             <div className="toast">
                 <ToastContainer />
             </div>
             <div className='flex h-[40vw] justify-center items-center'>
                 <button className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' onClick={logoutUpdate(user)}>Logout</button>
             </div>
-        </>
+        </div>
     )
 }
 
