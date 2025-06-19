@@ -10,6 +10,7 @@ const Logout = () => {
     useEffect(() => {
         fetchUser();
     }, [])
+
     const fetchUser = async () => {
         const token = localStorage.getItem('token'); // Get the token from local storage
         const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
@@ -36,12 +37,12 @@ const Logout = () => {
 
     return (
         <div className='flex justify-center items-center'>
+            <div className="toast">
+                <ToastContainer />
+            </div>
             {
                 user ? (
                     <div className="box">
-                        <div className="toast">
-                            <ToastContainer />
-                        </div>
                         <div className='flex h-[40vw] justify-center items-center'>
                             <button 
                                 className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' 
@@ -52,13 +53,10 @@ const Logout = () => {
                     </div>
                 ) : (
                     <div className="box">
-                        <div className="toast">
-                            <ToastContainer />
-                        </div>
                         <div className='flex h-[40vw] justify-center items-center'>
                             <button 
                                 className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' 
-                                onClick={logoutUpdate()} >
+                            >
                                 User Already Logout 
                             </button>
                         </div>
