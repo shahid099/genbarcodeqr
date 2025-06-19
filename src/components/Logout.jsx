@@ -23,38 +23,50 @@ const Logout = () => {
         const userData = await response.json();
         setUser(userData.user);
 
-        if (response.ok) {
-            // router.push('/');
-            // toast.success('User login Successfully'); // Show success alert
-        } else {
-            router.push('/login');
-            toast.error('Please login, to use the site.'); // Show error alert
-        }
-
     }
 
-    const logoutUpdate = (user)=> {
-        if(user) {
-            // localStorage.clear('token');
-            toast.success("User logout Successfully!")
+    const logoutUpdate = () => {
+        localStorage.clear('token');
+        toast.success("User logout Successfully!")
 
-            setTimeout(() => {
-                router.push('/login');           
-            }, 6000);
-
-        } else {
-            toast.error("User does't exixt.")
-        }
+        setTimeout(() => {
+            router.push('/login');
+        }, 6000);
     }
 
     return (
         <div className='flex justify-center items-center'>
-            <div className="toast">
-                <ToastContainer />
-            </div>
-            <div className='flex h-[40vw] justify-center items-center'>
-                <button className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' onClick={logoutUpdate(user)}>Logout</button>
-            </div>
+            {
+                user ? (
+                    <div className="box">
+                        <div className="toast">
+                            <ToastContainer />
+                        </div>
+                        <div className='flex h-[40vw] justify-center items-center'>
+                            <button 
+                                className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' 
+                                onClick={logoutUpdate()} >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="box">
+                        <div className="toast">
+                            <ToastContainer />
+                        </div>
+                        <div className='flex h-[40vw] justify-center items-center'>
+                            <button 
+                                className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' 
+                                onClick={logoutUpdate()} >
+                                User Already Logout 
+                            </button>
+                        </div>
+                    </div>
+                )
+
+            }
+
         </div>
     )
 }
