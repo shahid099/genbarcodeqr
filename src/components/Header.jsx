@@ -50,10 +50,15 @@ export default function Header() {
             href="/login">
               Login
           </Link>
-          <Link 
+          {/* <Link 
             className="p-2 text-sm text-zinc-200 hover:text-cyan-400" 
             href="/pbarcode">
               PBarcode
+          </Link> */}
+          <Link 
+            className='p-2 text-sm text-zinc-200 hover:text-cyan-400'
+            href="/logout">
+              Logout
           </Link>
         </nav>
 
