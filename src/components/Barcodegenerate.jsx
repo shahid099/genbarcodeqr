@@ -1,18 +1,21 @@
 import { ReactBarcode } from "react-jsbarcode";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify';
+import Loader from "./Loader";
 
 const Barcodegenerate = () => {
-  const router  =  useRouter();
+  const router = useRouter();
 
   const [textValue, setTextValue] = useState('');
-  const handleChange = (event)=> {
+  const [ loading, setLoading ] = useState(false);
+
+  const handleChange = (event) => {
     setTextValue(event.target.value);
   }
-    // States 
-  const [ count, setCount ] = useState(0);
-  const [ buttonbg, setButtonbg ] = useState("buttonBackground");
+  // States 
+  const [count, setCount] = useState(0);
+  const [buttonbg, setButtonbg] = useState("buttonBackground");
   const [barcodeArray, setBarcodeArray] = useState([]);
   const [selectedValue, setSelectedValue] = useState('code128');
   const [selectedbgColor, setSelectedbgColor] = useState('#ffff')
@@ -27,27 +30,27 @@ const Barcodegenerate = () => {
     setSelectedValue(event.target.value);
   }
 
-  const handlebgColorchange = (event)=> {
+  const handlebgColorchange = (event) => {
     setSelectedbgColor(event.target.value);
   }
 
-  const handleLineColorChange = (event)=> {
+  const handleLineColorChange = (event) => {
     setLineColor(event.target.value);
   }
 
-  const handleWithChange = (event)=> {
+  const handleWithChange = (event) => {
     setWidth(event.target.value)
   }
 
-  const handleHeightChange = (event)=> {
+  const handleHeightChange = (event) => {
     setHeight(event.target.value)
   }
 
-  const handleFontSizeChange = (event)=> {
+  const handleFontSizeChange = (event) => {
     setFontsize(event.target.value);
   }
 
-  const handleClick =()=> {
+  const handleClick = () => {
     const arrayofBarcode = textValue.split(/\s+/);
     setBarcodeArray(arrayofBarcode);
     // SetThe Background of the Buttton When User Click the Button.
@@ -55,10 +58,10 @@ const Barcodegenerate = () => {
     // After some time {onclickButtonBackground} will be removed.
     setTimeout(() => {
       setButtonbg("buttonBackground")
-    }, 2000); 
+    }, 2000);
 
     let toastText = textValue.trim();
-    if(toastText) {
+    if (toastText) {
       toast.success("Barcode Generated Successfully!")
     } else {
       toast.error("Enter text to Generate Barcodes!")
@@ -67,81 +70,93 @@ const Barcodegenerate = () => {
     setCount(count + 1);
   }
 
-  const handlePressEnter = (event)=> {
-    if(event.key === 'Enter') {
+  const handlePressEnter = (event) => {
+    if (event.key === 'Enter') {
       handleClick();
+    }
   }
-}
 
 
 
-    // Function to Upload Data to Database
-    const dataUpload = async () => { 
-      console.log("Muhammad Shahid!", textValue);
-      const token = localStorage.getItem('token'); // Get the token from local storage
-      const response = await fetch('https://barcodeqrapi.onrender.com/postdata', {
-          method: 'POST', 
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `${token}`, // Add token to Authorization header
-          },
-          body: JSON.stringify({textValue})
-      })
-      const data = await response.json();
+  // Function to Upload Data to Database
+  const dataUpload = async () => {
+    console.log("Muhammad Shahid!", textValue);
+    const token = localStorage.getItem('token'); // Get the token from local storage
+    const response = await fetch('https://barcodeqrapi.onrender.com/postdata', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`, // Add token to Authorization header
+      },
+      body: JSON.stringify({ textValue })
+    })
+    const data = await response.json();
 
-      if (response.ok) {
-        toast.success(data.message); // Show success alert
-      } else {
-        toast(data.message); // Show error alert
-      }
+    if (response.ok) {
+      toast.success(data.message); // Show success alert
+    } else {
+      toast(data.message); // Show error alert
+    }
 
-   }
+  }
   //  END OF Upload Data to Database
 
   // Function to fetchUser Data from Database
   const [user, setUser] = useState(null);
-  useEffect(()=> {
+  useEffect(() => {
     fetchUser();
   }, [])
-  const fetchUser = async () => { 
-    const token = localStorage.getItem('token'); // Get the token from local storage
-    const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
-        method: 'GET', 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `${token}`, // Add token to Authorization header
-        },
-    })
 
-    const userData = await response.json();
-    setUser(userData.user);
-
-    if (response.ok) {
-      router.push('/');
-      // toast.success('User login Successfully'); // Show success alert
-    } else {
-      router.push('/login');
-      toast.error('Please login, to use the site.'); // Show error alert
+  const fetchUser = async () => {
+        setLoading(true)
+        try {
+          const token = localStorage.getItem('token'); // Get the token from local storage
+          const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `${token}`, // Add token to Authorization header
+            },
+          })
+      
+          const userData = await response.json();
+          setUser(userData.user);
+      
+          if (response.ok) {
+            router.push('/');
+            // toast.success('User login Successfully'); // Show success alert
+          } else {
+            router.push('/login');
+            toast.error('Please login, to use the site.'); // Show error alert
+          }
+    } catch (error) {
+      console.error(error.message)
+    } finally {
+      setLoading(false)
     }
 
- }
-//  END Function to fetchUser Data from Database
+  }
+  //  END Function to fetchUser Data from Database
 
   return (
     <>
+    {
+      loading ? (
+        <Loader />
+      ): (
       <div className="w-full h-full relative">
-        <h1 className="text-center mt-4 text-2xl"> 
-          <span className="text-3xl">Welcome,</span> 
-          <span className="text-3xl ml-4">{user?.username}</span> 
+        <h1 className="text-center mt-4 text-2xl">
+          <span className="text-3xl">Welcome,</span>
+          <span className="text-3xl ml-4">{user?.username}</span>
         </h1>
         <div className="toast">
           <ToastContainer />
         </div>
         <section className="flex items-center justify-around">
           <textarea id="textarea"
-            className="flex rounded-md p-2 border-red-200 outline-none max-md:w-[20em] max-md:h-[5em] max-md:mt-4" 
-            value={textValue} 
-            onChange={handleChange} 
+            className="flex rounded-md p-2 border-red-200 outline-none max-md:w-[20em] max-md:h-[5em] max-md:mt-4"
+            value={textValue}
+            onChange={handleChange}
             onKeyDown={handlePressEnter}
             cols={45} rows={5} placeholder="Type something...">
 
@@ -182,16 +197,16 @@ const Barcodegenerate = () => {
           </div>
         </section>
         <section className="sectionButton flex justify-center">
-          <button 
+          <button
             className={`buttonGen ${buttonbg} rounded-m text-xl`}
             onClick={handleClick} >
-              Generate
+            Generate
           </button>
         </section>
         <section>
-            <div className="w-full px-10 flex justify-center items-center mt-10 flex-col">
-             {filteredArr.map((value, index) => (
-              <div key={index} className="marginimg"> 
+          <div className="w-full px-10 flex justify-center items-center mt-10 flex-col">
+            {filteredArr.map((value, index) => (
+              <div key={index} className="marginimg">
                 <ReactBarcode
                   value={value}
                   options={{
@@ -209,6 +224,8 @@ const Barcodegenerate = () => {
           </div>
         </section>
       </div>
+      )
+    }
     </>
   )
 }

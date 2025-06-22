@@ -1,6 +1,13 @@
 "use client"
+
+import Header from "@/components/Header"
+
 const page = () => {
   return (
+    <>
+    <header>
+        <Header />
+    </header>
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
       <div className="max-w-4xl bg-white rounded-lg shadow-lg p-10 space-y-6">
         <h1 className="text-3xl font-bold text-center text-blue-600 max-md:text-2xl max-sm:text-xl">
@@ -101,6 +108,7 @@ const page = () => {
         </section>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,44 +1,75 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation';
-import { ToastContainer, toast } from 'react-toastify';
+import Link from "next/link";
+import Loader from './Loader';
 
 const Logout = () => {
     const router = useRouter();
 
+    // Function to fetchUser Data from Database
+    const [user, setUser] = useState(null);
+    const [loader, setLoader] = useState(false)
 
-         // Get the token from local storage
-         const token = localStorage.getItem('token');
+    useEffect(() => {
+        fetchUser();
+    }, [])
 
-    const logoutUpdate = (token) => {
-        if(token) {
-            localStorage.clear('token');
-            
-                    setTimeout(() => {
-                        router.push('/login');
-                    }, 6000);
+    const fetchUser = async () => {
+        setLoader(true)
+
+        try {
+
+            const token = localStorage.getItem('token'); // Get the token from local storage
+            const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`, // Add token to Authorization header
+                },
+            })
+
+            const userData = await response.json();
+            setUser(userData.user);
+
+        } catch (error) {
+            console.log(error.message);
+        } finally {
+            setLoader(false)
+        }
+
+    }
+    //  END Function to fetchUser Data from Database
+
+    const logoutUpdate = (user) => {
+        if (user) {
+            setTimeout(() => {
+                localStorage.clear('token');
+            }, 2000);
+
+            setTimeout(() => {
+                router.push('/login');
+            }, 6000);
         }
     }
 
     return (
-        <div className='flex justify-center items-center'>
-            <div className="toast">
-                <ToastContainer />
-            </div>
+        <div className='w-full h-[90vh] flex justify-center items-center'>
             {
-                token ? (
-                    <div className="box">
-                        <div className='flex h-[40vw] justify-center items-center'>
-                            <button 
-                                className='px-10 py-2 text-2xl bg-slate-800 text-white rounded-md hover:bg-slate-950' 
-                                onClick={logoutUpdate(token)} >
-                                Logout
-                            </button>
-                        </div>
-                    </div>
+                loader ? (
+                    <Loader />
                 ) : (
                     <div className="box">
-                        <div className='flex h-[40vw] justify-center items-center'>
-                            User logout Successfully!
+                        <div className='flex h-[40vw] justify-center items-center flex-col gap-6 '>
+                            <button
+                                className='px-10 py-2 text-2xl text-white rounded-md'
+                                onClick={logoutUpdate(user)} >
+                                User logout Successfully!
+                            </button>
+                            <div className="login">
+                                <Link href="/login" className="px-12 py-3 bg-slate-700 rounded-md text-white text-xl hover:bg-slate-800">
+                                    Sign In
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 )

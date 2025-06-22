@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 // Importing Components
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,9 +27,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header>
+        {/* <header>
           <Header />
-        </header>
+        </header> */}
         {children}
       <footer className="flex items-center justify-center">
         <Footer />
