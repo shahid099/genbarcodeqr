@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           <Header />
         </header> */}
         {children}
-      <footer className="flex items-center justify-center">
+      <footer className="flex items-center justify-center mt-[30rem]">
         <Footer />
       </footer>
       </body>

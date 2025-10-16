@@ -23,7 +23,11 @@ const Barcodegenerate = () => {
   const [width, setWidth] = useState(2);
   const [height, setHeight] = useState(60);
   const [fontsize, setFontsize] = useState(20);
+
+  const [ middlefinger, setMiddlefinger ] = useState(null);
+
   const filteredArr = barcodeArray.filter(item => item !== '');
+
   // Function Handlers
 
   const handleSelectChange = (event) => {
@@ -66,8 +70,9 @@ const Barcodegenerate = () => {
     } else {
       toast.error("Enter text to Generate Barcodes!")
     }
-
     setCount(count + 1);
+
+    setMiddlefinger('🖕');
   }
 
   const handlePressEnter = (event) => {
@@ -144,7 +149,7 @@ const Barcodegenerate = () => {
       loading ? (
         <Loader />
       ): (
-      <div className="w-full h-full relative">
+      <div className="w-full h-[150vh] relative">
         <h1 className="text-center mt-4 text-2xl">
           <span className="text-3xl">Welcome,</span>
           <span className="text-3xl ml-4">{user?.username}</span>
@@ -159,7 +164,6 @@ const Barcodegenerate = () => {
             onChange={handleChange}
             onKeyDown={handlePressEnter}
             cols={45} rows={5} placeholder="Type something...">
-
           </textarea>
           <div className="setting max-md:hidden">
             <div className="formate flex gap-1">
@@ -205,7 +209,7 @@ const Barcodegenerate = () => {
         </section>
         <section>
           <div className="w-full px-10 flex justify-center items-center mt-10 flex-col">
-            {filteredArr.map((value, index) => (
+            {/* {filteredArr.map((value, index) => (
               <div key={index} className="marginimg">
                 <ReactBarcode
                   value={value}
@@ -220,7 +224,10 @@ const Barcodegenerate = () => {
                   renderer="svg"
                 />
               </div>
-            ))}
+            ))} */}
+
+            {middlefinger}
+
           </div>
         </section>
       </div>

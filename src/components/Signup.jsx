@@ -16,7 +16,7 @@ const Signup = () => {
 
     // Handle signup logic here
     try {
-      const response = await fetch('https://barcodeqrapi.onrender.com/user/signup', {
+      const response = await fetch('http://localhost:5000/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -27,9 +27,9 @@ const Signup = () => {
       const data = await response.json();
       if (response.ok) {
         // Save the token to local storage
-        localStorage.setItem('token', data.token);
-        setMessage(data.message); // Success message
-        router.push('/'); // Redirect to home page
+        // localStorage.setItem('token', data.token);
+        setMessage(data.message);      // Success message
+        // router.push('/'); // Redirect to home page
         toast(data.message); // Show success alert
       } else {
         setMessage(data.message); // Error message
