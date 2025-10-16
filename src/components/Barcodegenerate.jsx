@@ -82,7 +82,6 @@ const Barcodegenerate = () => {
   }
 
 
-
   // Function to Upload Data to Database
   const dataUpload = async () => {
     console.log("Muhammad Shahid!", textValue);
