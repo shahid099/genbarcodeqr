@@ -1,10 +1,10 @@
 "use client"
-import Logout from "@/components/Logout"
+// import Logout from "@/components/Logout"
 
 const page = () => {
   return (
     <div>
-        <Logout />
+        {/* <Logout /> */}
     </div>
   )
 }

@@ -1,20 +1,14 @@
-import { ReactBarcode } from "react-jsbarcode";
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from 'react-toastify';
-import Loader from "./Loader";
+// import { ReactBarcode } from "react-jsbarcode";
+import React, { useState } from "react";
 
 const Barcodegenerate = () => {
-  const router = useRouter();
 
   const [textValue, setTextValue] = useState('');
-  const [ loading, setLoading ] = useState(false);
 
   const handleChange = (event) => {
     setTextValue(event.target.value);
   }
   // States 
-  const [count, setCount] = useState(0);
   const [buttonbg, setButtonbg] = useState("buttonBackground");
   const [barcodeArray, setBarcodeArray] = useState([]);
   const [selectedValue, setSelectedValue] = useState('code128');
@@ -64,13 +58,7 @@ const Barcodegenerate = () => {
       setButtonbg("buttonBackground")
     }, 2000);
 
-    let toastText = textValue.trim();
-    if (toastText) {
-      toast.success("Barcode Generated Successfully!")
-    } else {
-      toast.error("Enter text to Generate Barcodes!")
-    }
-    setCount(count + 1);
+    // let toastText = textValue.trim();
 
     setMiddlefinger('🖕');
   }
@@ -83,79 +71,75 @@ const Barcodegenerate = () => {
 
 
   // Function to Upload Data to Database
-  const dataUpload = async () => {
-    console.log("Muhammad Shahid!", textValue);
-    const token = localStorage.getItem('token'); // Get the token from local storage
-    const response = await fetch('https://barcodeqrapi.onrender.com/postdata', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `${token}`, // Add token to Authorization header
-      },
-      body: JSON.stringify({ textValue })
-    })
-    const data = await response.json();
+  // const dataUpload = async () => {
+  //   console.log("Muhammad Shahid!", textValue);
+  //   const token = localStorage.getItem('token'); // Get the token from local storage
+  //   const response = await fetch('https://barcodeqrapi.onrender.com/postdata', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `${token}`, // Add token to Authorization header
+  //     },
+  //     body: JSON.stringify({ textValue })
+  //   })
+  //   const data = await response.json();
 
-    if (response.ok) {
-      toast.success(data.message); // Show success alert
-    } else {
-      toast(data.message); // Show error alert
-    }
+  //   if (response.ok) {
+  //     toast.success(data.message); // Show success alert
+  //   } else {
+  //     toast(data.message); // Show error alert
+  //   }
 
-  }
+  // }
   //  END OF Upload Data to Database
 
   // Function to fetchUser Data from Database
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    fetchUser();
-  }, [])
+  // const [user, setUser] = useState(null);
+  // useEffect(() => {
+  //   fetchUser();
+  // }, [])
 
-  const fetchUser = async () => {
-        setLoading(true)
-        try {
-          const token = localStorage.getItem('token'); // Get the token from local storage
-          const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `${token}`, // Add token to Authorization header
-            },
-          })
+  // const fetchUser = async () => {
+  //       setLoading(true)
+  //       try {
+  //         const token = localStorage.getItem('token'); // Get the token from local storage
+  //         const response = await fetch('https://barcodeqrapi.onrender.com/user/finduser', {
+  //           method: 'GET',
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //             'Authorization': `${token}`, // Add token to Authorization header
+  //           },
+  //         })
       
-          const userData = await response.json();
-          setUser(userData.user);
+  //         const userData = await response.json();
+  //         setUser(userData.user);
       
-          if (response.ok) {
-            router.push('/');
-            // toast.success('User login Successfully'); // Show success alert
-          } else {
-            router.push('/login');
-            toast.error('Please login, to use the site.'); // Show error alert
-          }
-    } catch (error) {
-      console.error(error.message)
-    } finally {
-      setLoading(false)
-    }
+  //         if (response.ok) {
+  //           router.push('/');
+  //           // toast.success('User login Successfully'); // Show success alert
+  //         } else {
+  //           router.push('/login');
+  //           toast.error('Please login, to use the site.'); // Show error alert
+  //         }
+  //   } catch (error) {
+  //     console.error(error.message)
+  //   } finally {
+  //     setLoading(false)
+  //   }
 
-  }
+  // }
   //  END Function to fetchUser Data from Database
 
   return (
     <>
-    {
-      loading ? (
-        <Loader />
-      ): (
       <div className="w-full h-[150vh] relative">
         <h1 className="text-center mt-4 text-2xl">
           <span className="text-3xl">Welcome,</span>
-          <span className="text-3xl ml-4">{user?.username}</span>
+          <span className="text-3xl ml-4">Welcome Here!</span>
         </h1>
-        <div className="toast">
+        {/* <div className="toast">
           <ToastContainer />
-        </div>
+        </div> */}
         <section className="flex items-center justify-around">
           <textarea id="textarea"
             className="flex rounded-md p-2 border-red-200 outline-none max-md:w-[20em] max-md:h-[5em] max-md:mt-4"
@@ -172,7 +156,7 @@ const Barcodegenerate = () => {
                 <option value="code39">code39</option>
               </select>
               {/* Button to Upload the data to Mongodb */}
-              <button className="px-4 py-1 bg-white rounded-md" onClick={dataUpload}>ucode128</button>
+              <button className="px-4 py-1 bg-white rounded-md" >ucode128</button>
             </div>
             {/* End Button to Upload the data to Mongodb*/}
             <div className="bgColor" >
@@ -225,13 +209,14 @@ const Barcodegenerate = () => {
               </div>
             ))} */}
 
-            {middlefinger}
+            <div className="flex text-9xl">
+             {middlefinger}
+            </div>
+
 
           </div>
         </section>
       </div>
-      )
-    }
     </>
   )
 }

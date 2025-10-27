@@ -9,7 +9,7 @@ const page = () => {
         <Header />
     </header>
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
-      <div className="max-w-4xl bg-white rounded-lg shadow-lg p-10 space-y-6">
+      {/* <div className="max-w-4xl bg-white rounded-lg shadow-lg p-10 space-y-6">
         <h1 className="text-3xl font-bold text-center text-blue-600 max-md:text-2xl max-sm:text-xl">
           About Us: Barcode & QR Code Generator
         </h1>
@@ -106,7 +106,7 @@ const page = () => {
             or follow us on <a href="www.facebook.com" className="text-blue-500 underline" target='_blank'>Facebook</a>.
           </p>
         </section>
-      </div>
+      </div> */}
     </div>
     </>
   )
